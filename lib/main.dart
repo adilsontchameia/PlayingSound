@@ -1,3 +1,4 @@
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,8 +14,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  //Instanciando o pacote que reproducao de sons
+  AudioCache audioCache = AudioCache();
+  //Executando o som
+  _executar() async {
+    //Instanciando a classe
+    final player = AudioCache();
+    //Pegando o arquivo desejado para reproduzir
+    player.play("musica.mp3");
+  }
+
   @override
   Widget build(BuildContext context) {
+    _executar();
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
@@ -23,9 +35,7 @@ class _HomeState extends State<Home> {
       ),
       body: Container(
         child: Column(
-          children: [
-            
-          ],
+          children: [],
         ),
       ),
     );
