@@ -21,21 +21,37 @@ class _HomeState extends State<Home> {
     //Instanciando a classe
     final player = AudioCache();
     //Pegando o arquivo desejado para reproduzir
-    player.play("musica.mp3");
+    player.play("fear.mp3");
   }
 
   @override
   Widget build(BuildContext context) {
-    _executar();
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
         title: Text("Playing Sound"),
         backgroundColor: Colors.grey,
       ),
-      body: Container(
-        child: Column(
-          children: [],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              GestureDetector(
+                child: Image.asset("images/executar.png"),
+                onTap: () {},
+              ),
+              GestureDetector(
+                child: Image.asset("images/pausar.png"),
+                onTap: () {},
+              ),
+              GestureDetector(
+                child: Image.asset("images/parar.png"),
+                onTap: () {},
+              ),
+            ],
+          ),
         ),
       ),
     );
