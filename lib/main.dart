@@ -17,26 +17,30 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   //Instanciando o pacote que reproducao de sons
   //Instanciando a classe
-  AudioPlayer audioPlayer = AudioPlayer();
   AudioCache audioCache = AudioCache();
-  //Verificando se e a primeira vez a ser executada
+  AudioPlayer player = AudioPlayer();
   bool primeiraExecucao = true;
   //Executando o som
   _executar() async {
     //Pegando o arquivo desejado para reproduzir
     if (primeiraExecucao) {
-      audioPlayer.play("fear.mp3");
+      player = await audioCache.play("fear.mp3");
       primeiraExecucao = false;
     } else {
-      audioPlayer.resume();
+      player.resume();
     }
   }
 
+  //Pausar o som
   _pausar() async {
-    int resultado = await audioPlayer.pause();
-    if (resultado == 1) {
-      //De Certo
-    }
+    int resultado = await player.pause();
+    if (resultado == 1) {}
+  }
+
+  //Parando a reproducao
+  _parar() async {
+    int resultado = await player.stop();
+    if (resultado == 1) {}
   }
 
   @override
@@ -61,11 +65,15 @@ class _HomeState extends State<Home> {
               ),
               GestureDetector(
                 child: Image.asset("images/pausar.png"),
-                onTap: () {},
+                onTap: () {
+                  _pausar();
+                },
               ),
               GestureDetector(
                 child: Image.asset("images/parar.png"),
-                onTap: () {},
+                onTap: () {
+                  _parar();
+                },
               ),
             ],
           ),
