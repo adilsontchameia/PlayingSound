@@ -20,15 +20,23 @@ class _HomeState extends State<Home> {
   AudioPlayer audioPlayer = AudioPlayer();
   AudioCache audioCache = AudioCache();
   //Verificando se e a primeira vez a ser executada
-  //
+  bool primeiraExecucao = true;
   //Executando o som
   _executar() async {
     //Pegando o arquivo desejado para reproduzir
-    audioPlayer.play("fear.mp3");
+    if (primeiraExecucao) {
+      audioPlayer.play("fear.mp3");
+      primeiraExecucao = false;
+    } else {
+      audioPlayer.resume();
+    }
   }
 
   _pausar() async {
     int resultado = await audioPlayer.pause();
+    if (resultado == 1) {
+      //De Certo
+    }
   }
 
   @override
