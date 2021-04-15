@@ -20,11 +20,11 @@ class _HomeState extends State<Home> {
   AudioCache audioCache = AudioCache();
   AudioPlayer player = AudioPlayer();
   bool primeiraExecucao = true;
-  double _volume = 0.5; //Volume intermediario (50)
+  double volume = 0.5; //Volume intermediario (50)
   //Executando o som
   _executar() async {
     //Pegando o arquivo desejado para reproduzir
-    player.setVolume(_volume);
+    player.setVolume(volume);
     if (primeiraExecucao) {
       player = await audioCache.play("fear.mp3");
       primeiraExecucao = false;
@@ -56,36 +56,41 @@ class _HomeState extends State<Home> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: Column(
             children: [
               Slider(
-                  value: 0,
-                  _volume: 0,
-                  max: 1,
-                  onChanged: (novoVolume) {
-                    setState(() {
-                      _volume = novoVolume;
-                    });
-                    player.setVolume(novoVolume);
-                  }),
-              GestureDetector(
-                child: Image.asset("images/executar.png"),
-                onTap: () {
-                  _executar();
+                value: volume,
+                min: 0,
+                max: 1,
+                onChanged: (novoVolume) {
+                  setState(() {
+                    volume = novoVolume;
+                  });
+                  player.setVolume(novoVolume);
                 },
               ),
-              GestureDetector(
-                child: Image.asset("images/pausar.png"),
-                onTap: () {
-                  _pausar();
-                },
-              ),
-              GestureDetector(
-                child: Image.asset("images/parar.png"),
-                onTap: () {
-                  _parar();
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    child: Image.asset("images/executar.png"),
+                    onTap: () {
+                      _executar();
+                    },
+                  ),
+                  GestureDetector(
+                    child: Image.asset("images/pausar.png"),
+                    onTap: () {
+                      _pausar();
+                    },
+                  ),
+                  GestureDetector(
+                    child: Image.asset("images/parar.png"),
+                    onTap: () {
+                      _parar();
+                    },
+                  ),
+                ],
               ),
             ],
           ),
