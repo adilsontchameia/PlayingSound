@@ -62,12 +62,14 @@ class _HomeState extends State<Home> {
                 value: volume,
                 min: 0,
                 max: 1,
+                divisions: 10, //Divisoes
                 onChanged: (novoVolume) {
                   setState(() {
                     volume = novoVolume;
                   });
                   player.setVolume(novoVolume);
                 },
+                activeColor: Colors.grey,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
