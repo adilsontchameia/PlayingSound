@@ -1,16 +1,4 @@
-# playing_sound
+# Playing Sound With Flutter
 
-A new Flutter project.
+![Screen Capture_20210415225347](https://user-images.githubusercontent.com/64656900/115073664-91c6da00-9ef0-11eb-8a16-418572b58067.jpg)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
